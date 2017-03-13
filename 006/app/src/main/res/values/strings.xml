@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">006</string>
+    <string name="to">Para</string>
+    <string name="subject">Assunto</string>
+    <string name="message">Conteúdo</string>
+    <string name="send">Enviar</string>
+    <string name="reminder">Lembrete</string>
+    <string name="done">Pronto</string>
+    <string name="when">Quando</string>
+    <string name="time">Horário</string>
+    <string name="title_activity_exemplo_adapter">ExemploAdapterActivity</string>
+
+</resources>
