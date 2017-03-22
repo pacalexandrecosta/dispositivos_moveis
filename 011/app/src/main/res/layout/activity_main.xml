@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtPromocao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deseja participar da promoção" />
+
+    <ToggleButton
+        android:id="@+id/tglPromocao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/txtPromocao"
+        android:onClick="onTglPromocaoClick"
+        android:textOff="Não"
+        android:textOn="Sim" />
+
+    <TextView
+        android:id="@+id/txtModoRecebimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tglPromocao"
+        android:text="Receber notificações por:" />
+
+    <RadioGroup
+        android:id="@+id/rdgModo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tglPromocao"
+        android:layout_toRightOf="@id/txtModoRecebimento">
+
+        <RadioButton
+            android:id="@+id/rdNao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Não Receber" />
+
+        <RadioButton
+            android:id="@+id/rdTelefone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telefone" />
+
+        <RadioButton
+            android:id="@+id/rdEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txtModoConhecimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rdgModo"
+        android:text="De que forma ficou sabendo da Faculdade?" />
+
+    <CheckBox
+        android:id="@+id/chkRadio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtModoConhecimento"
+        android:text="Radio" />
+
+    <CheckBox
+        android:id="@+id/chkJornal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtModoConhecimento"
+        android:layout_toRightOf="@id/chkRadio"
+        android:text="Jornal" />
+
+    <CheckBox
+        android:id="@+id/chkTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtModoConhecimento"
+        android:layout_toRightOf="@id/chkJornal"
+        android:text="TV" />
+
+    <CheckBox
+        android:id="@+id/chkInternet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtModoConhecimento"
+        android:layout_toRightOf="@id/chkTV"
+        android:text="Internet" />
+
+    <Button
+        android:id="@+id/btnLimpar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chkRadio"
+        android:onClick="onBtnLimparClick"
+        android:text="Limpar" />
+
+</RelativeLayout>
