@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Exemplo017</string>
+<string name="app_name">Exemplo017</string>
+<string name="convidado">Convidado</string>
 </resources>

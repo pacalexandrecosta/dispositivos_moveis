@@ -40,8 +40,8 @@ public class NoticiaFragment extends Fragment {
         return v;
     }
 
-    public void setNoticia(Noticia noticia) {
-        this.noticia = noticia;
+    public void setNoticia(Noticia not) {
+        this.noticia = not;
         if (this.noticia != null) {
             txtManchete.setText(this.noticia.getManchete());
             txtConteudo.setText(this.noticia.getConteudo());

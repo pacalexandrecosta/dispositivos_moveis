@@ -1,8 +1,10 @@
 package desenvolvimento.nassau.exemplo017;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -43,11 +45,24 @@ public class MainActivity extends Activity {
         String nome = novoConvidado.getText().toString();
         adaptador.add(nome);
         novoConvidado.setText("");
+        adaptador.notifyDataSetChanged();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable("convidados", convidados);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(MainActivity.class.getName(), "isFinishing"+isFinishing());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onPause();
+        Log.i(MainActivity.class.getName(), "on Destroy isFinishing"+isFinishing());
     }
 }
