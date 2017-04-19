@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Exemplo020</string>
+    <string name="intent_dado_enviado">desenvolvimento.nassau.localbroadcast.DADO_ENVIADO</string>
+</resources>
