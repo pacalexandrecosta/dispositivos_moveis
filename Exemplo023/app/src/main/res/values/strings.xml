@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Exemplo023</string>
+    <string name="descricao_servico">Esse serviço nada faz. É apenas um teste.</string>
+    <string name="url_issue">http://www.redmine.org/issues/</string>
+</resources>

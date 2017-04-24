@@ -13,6 +13,6 @@ import android.widget.Toast;
 public class MeuBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        Toast.makeText(context, "broadcast recebido" + intent.getExtras().getBoolean("state"), Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "broadcast recebido" + intent.getExtras().getBoolean("state"), Toast.LENGTH_LONG).show();
     }
 }
