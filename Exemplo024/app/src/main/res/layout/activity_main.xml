@@ -4,13 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/edtNumeroIssue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Insira o número do ticket."
-        android:inputType="number" />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -12,18 +12,14 @@ import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
-    EditText edtNumeroIssue = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        edtNumeroIssue = (EditText) findViewById(R.id.edtNumeroIssue);
     }
 
     public void onBtnStartServiceClick(View v) {
-        int numeroIssue = Integer.valueOf(edtNumeroIssue.getText().toString());
         Intent intencao = new Intent(this, MeuServico.class);
-        intencao.putExtra("numeroIssue", numeroIssue);
         startService(intencao);
     }
 }
