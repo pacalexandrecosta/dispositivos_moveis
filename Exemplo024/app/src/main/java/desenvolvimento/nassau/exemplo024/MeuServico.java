@@ -27,19 +27,34 @@ import java.net.URLConnection;
  */
 
 public class MeuServico extends Service {
-    @Nullable @Override
+    @Nullable
+    @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startID) {
+
+
         Log.i(MeuServico.class.getCanonicalName(), "Antes Thread.Sleep");
         try {
-            Thread.sleep(10000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         Log.i(MeuServico.class.getCanonicalName(), "Após Thread.Sleep");
         return START_STICKY;
+    }
+
+
+    @Override
+    public void onCreate() {
+        Log.i(MeuServico.class.getCanonicalName(), "onCreate executado");
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.i(MeuServico.class.getCanonicalName(), "onDestroy executado");
     }
 }

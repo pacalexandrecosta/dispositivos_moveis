@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -39,6 +40,10 @@ public class MeuServico extends IntentService {
         int numeroIssue = dados.getInt("numeroIssue");
         JSONObject objetoJson = obterObjetoJson(numeroIssue);
         Log.i(MeuServico.class.getCanonicalName(), objetoJson.toString());
+
+        Intent intencao = new Intent(MainActivity.DADO_RECEBIDO);
+        intencao.putExtra("ticket", objetoJson.toString());
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intencao);
     }
 
     private JSONObject obterObjetoJson(int numeroIssue) {
@@ -58,7 +63,6 @@ public class MeuServico extends IntentService {
 
             while ((line = reader.readLine()) != null) {
                 buffer.append(line + "\n");
-                Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
 
             }
             objeto = new JSONObject(buffer.toString()).getJSONObject("issue");

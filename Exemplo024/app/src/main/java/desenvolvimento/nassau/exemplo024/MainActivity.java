@@ -1,6 +1,7 @@
 package desenvolvimento.nassau.exemplo024;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,18 @@ public class MainActivity extends Activity {
 
     public void onBtnStartServiceClick(View v) {
         Intent intencao = new Intent(this, MeuServico.class);
-        startService(intencao);
+        PendingIntent intencaoPendente = PendingIntent.getService(this,0,intencao,0);
+        try {
+            intencaoPendente.send();
+        } catch (PendingIntent.CanceledException e) {
+            e.printStackTrace();
+        }
+//        startService(intencao);
+    }
+
+    public void onBtnStopServiceClick(View v)
+    {
+        Intent intencao = new Intent(this, MeuServico.class);
+        stopService(intencao);
     }
 }

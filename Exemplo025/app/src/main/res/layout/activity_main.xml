@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onBtnBindServiceClick"
+        android:text="Vincular Serviço." />
+
+
+    <EditText
+        android:id="@+id/edtNumero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Insira um número" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onBtnRequestServiceClick"
+        android:text="Requisitar Serviço." />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Desvincular serviço."
+        android:onClick="onBtnUnbindServiceClick"/>
+
+    <TextView
+        android:id="@+id/txtStatusVinculacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>
