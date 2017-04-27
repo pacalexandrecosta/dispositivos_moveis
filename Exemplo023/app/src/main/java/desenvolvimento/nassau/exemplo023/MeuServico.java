@@ -41,6 +41,8 @@ public class MeuServico extends IntentService {
         JSONObject objetoJson = obterObjetoJson(numeroIssue);
         Log.i(MeuServico.class.getCanonicalName(), objetoJson.toString());
 
+
+
         Intent intencao = new Intent(MainActivity.DADO_RECEBIDO);
         intencao.putExtra("ticket", objetoJson.toString());
         LocalBroadcastManager.getInstance(this).sendBroadcast(intencao);
