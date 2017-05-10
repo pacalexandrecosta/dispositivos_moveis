@@ -21,13 +21,7 @@ public class MainActivity extends Activity {
 
     public void onBtnStartServiceClick(View v) {
         Intent intencao = new Intent(this, MeuServico.class);
-        PendingIntent intencaoPendente = PendingIntent.getService(this,0,intencao,0);
-        try {
-            intencaoPendente.send();
-        } catch (PendingIntent.CanceledException e) {
-            e.printStackTrace();
-        }
-//        startService(intencao);
+        startService(intencao);
     }
 
     public void onBtnStopServiceClick(View v)

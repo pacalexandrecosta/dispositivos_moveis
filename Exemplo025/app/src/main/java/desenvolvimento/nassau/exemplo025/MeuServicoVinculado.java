@@ -19,14 +19,17 @@ public class MeuServicoVinculado extends android.app.Service {
     public IBinder onBind(Intent intent) {
         return new LocalBinder();
     }
+
     @Override
     public void onCreate() {
         Log.i(MeuServicoVinculado.class.getCanonicalName(), "onCreate executado");
     }
+
     @Override
     public void onDestroy() {
         Log.i(MeuServicoVinculado.class.getCanonicalName(), "onDestroy executado");
     }
+
     public boolean eNumeroPar(int i) {
         return i % 2 == 0;
     }
@@ -40,9 +43,6 @@ public class MeuServicoVinculado extends android.app.Service {
             return MeuServicoVinculado.this;
         }
     }
-
-
-
 
 
 }
