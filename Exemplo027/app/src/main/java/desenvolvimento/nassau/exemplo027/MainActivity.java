@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
         carregarContatos();
     }
 
-    public void carregarContatos(){
+    public void carregarContatos() {
         EditText txtFiltro = (EditText) findViewById(R.id.txtFiltro);
 
         ListView lstPessoas = (ListView) findViewById(R.id.lstPessoas);
@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
         String[] projection = new String[]{ContactsContract.Contacts.DISPLAY_NAME};
 
         String selection = ContactsContract.Contacts.DISPLAY_NAME + " like ?";
-        String[] selectionArgs = new String[]{"%"+txtFiltro.getText().toString()+"%"};
+        String[] selectionArgs = new String[]{"%" + txtFiltro.getText().toString() + "%"};
 
         String sortOrder = ContactsContract.Contacts.DISPLAY_NAME + " ASC";
 
@@ -57,14 +57,17 @@ public class MainActivity extends Activity {
 
 
         ArrayAdapter<String> adaptador =
-                new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,nomes);
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nomes);
         lstPessoas.setAdapter(adaptador);
 
-        Log.i(MainActivity.class.getCanonicalName(), "URI-->"+uri.toString());
+        Log.i(MainActivity.class.getCanonicalName(), "URI-->" + uri.toString());
     }
 
-    public void onBtnFiltrarClick(View v)
-    {
+    public void onBtnFiltrarClick(View v) {
         carregarContatos();
+    }
+
+    public void onBtnAddContactClick(View v) {
+
     }
 }
