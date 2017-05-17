@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.util.Date;
 
@@ -14,18 +17,21 @@ import java.util.Date;
  * Created by paulo on 15/05/2017.
  */
 
-public class InserirAnotacaoActivity extends Activity implements View.OnClickListener {
-    int idAnotacao = 0;
+public class InserirAnotacaoActivity
+        extends Activity
+        implements View.OnClickListener {
+
+    Anotacao anotacaoUpdate = null;
     EditText edtTitulo = null;
     EditText edtDescricao = null;
     Button btnAcao = null;
-
     SQLiteDatabase dbEscrita = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inserir_anotacao_activity);
+
 
         dbEscrita = new AppAnotacaoDbHelper(this).getWritableDatabase();
 
@@ -37,45 +43,50 @@ public class InserirAnotacaoActivity extends Activity implements View.OnClickLis
         if (getIntent().getExtras() != null) // update
         {
             Bundle extras = getIntent().getExtras();
-            btnAcao.setText("Atualizar");
-            idAnotacao = extras.getInt("id");
-            edtTitulo.setText(extras.getString("titulo"));
-            edtDescricao.setText(extras.getString("descricao"));
+            anotacaoUpdate = (Anotacao) extras.getSerializable("anotacao");
+
+            edtTitulo.setText(anotacaoUpdate.getTitulo());
+            edtDescricao.setText(anotacaoUpdate.getDescricao());
         } else // insert
         {
-            btnAcao.setText("Inserir");
+
         }
 
 
     }
 
+
     @Override
     public void onClick(View v) {
-        Anotacao mAnotacao = new Anotacao();
-        mAnotacao.setTitulo(edtTitulo.getText().toString());
-        mAnotacao.setDataAtualizacao(new Date());
-        mAnotacao.setDataInsercao(new Date());
 
+        long resultado = 0;
+        if (anotacaoUpdate == null) {
 
-        mAnotacao.setDescricao(edtDescricao.getText().toString());
-        if (idAnotacao == 0) {
+            Anotacao anotacaoInsert = new Anotacao();
+            anotacaoInsert.setTitulo(edtTitulo.getText().toString());
+            anotacaoInsert.setDescricao(edtDescricao.getText().toString());
+            anotacaoInsert.setDataAtualizacao(new Date());
+            anotacaoInsert.setDataInsercao(new Date());
 
-            ContentValues tuplaInserir = new ContentValues();
-            tuplaInserir.put(AppAnotacaoContract.AnotacaoContract.COLUNA_TITULO, mAnotacao.getTitulo());
-            tuplaInserir.put(AppAnotacaoContract.AnotacaoContract.COLUNA_DESCRICAO, mAnotacao.getDescricao());
-            tuplaInserir.put(AppAnotacaoContract.AnotacaoContract.COLUNA_DATA_INSERCAO, mAnotacao.getDataInsercao().getTime());
-            tuplaInserir.put(AppAnotacaoContract.AnotacaoContract.COLUNA_DATA_ATUALIZACAO, mAnotacao.getDataAtualizacao().getTime());
-            dbEscrita.insert(AppAnotacaoContract.AnotacaoContract.TABELA_NOME, null, tuplaInserir);
+            resultado = Anotacao.insert(dbEscrita, anotacaoInsert);
+            if (resultado > 0)
+                Toast.makeText(this,
+                        "Anotação inserida com sucesso",
+                        Toast.LENGTH_SHORT).show();
         } else {
 
             String selection = AppAnotacaoContract.AnotacaoContract._ID + "=?";
-            String[] selectionArgs = {String.valueOf(idAnotacao)};
+            String[] selectionArgs = {String.valueOf(anotacaoUpdate.getId())};
 
-            ContentValues tuplaAtualizar = new ContentValues();
-            tuplaAtualizar.put(AppAnotacaoContract.AnotacaoContract.COLUNA_TITULO, mAnotacao.getTitulo());
-            tuplaAtualizar.put(AppAnotacaoContract.AnotacaoContract.COLUNA_DESCRICAO, mAnotacao.getDescricao());
-            tuplaAtualizar.put(AppAnotacaoContract.AnotacaoContract.COLUNA_DATA_ATUALIZACAO, mAnotacao.getDataAtualizacao().getTime());
-            dbEscrita.update(AppAnotacaoContract.AnotacaoContract.TABELA_NOME, tuplaAtualizar, selection, selectionArgs);
+            anotacaoUpdate.setTitulo(edtTitulo.getText().toString());
+            anotacaoUpdate.setDescricao(edtDescricao.getText().toString());
+            anotacaoUpdate.setDataAtualizacao(new Date());
+
+            resultado = Anotacao.update(dbEscrita, anotacaoUpdate);
+            if (resultado > 0)
+                Toast.makeText(this,
+                        "Anotação atualizada com sucesso",
+                        Toast.LENGTH_SHORT).show();
 
         }
         finish();

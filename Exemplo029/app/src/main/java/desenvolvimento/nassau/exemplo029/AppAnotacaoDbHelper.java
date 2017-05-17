@@ -12,7 +12,7 @@ import desenvolvimento.nassau.exemplo029.AppAnotacaoContract.AnotacaoContract;
 
 public class AppAnotacaoDbHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "AppAnotacao.db";
 
     private static final String SQL_CREATE_TABLE =
@@ -38,7 +38,6 @@ public class AppAnotacaoDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //  O QUE FAZER ?
         db.execSQL(SQL_DELETE_TABLE);
         db.execSQL(SQL_CREATE_TABLE);
     }

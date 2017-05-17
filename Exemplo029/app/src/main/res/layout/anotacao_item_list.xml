@@ -7,7 +7,9 @@
     <TextView
         android:id="@+id/txtTitulo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/txtDescricao"
@@ -15,7 +17,6 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1" />
-
 
     <TextView
         android:id="@+id/txtDataAtualizacao"

@@ -7,10 +7,8 @@ import android.provider.BaseColumns;
  */
 
 public final class AppAnotacaoContract {
-
         private AppAnotacaoContract() {
     }
-
 
     public static class AnotacaoContract implements BaseColumns {
         public static final String TABELA_NOME="anotacao";
