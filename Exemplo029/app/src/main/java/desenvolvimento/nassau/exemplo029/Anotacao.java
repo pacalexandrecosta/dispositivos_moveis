@@ -80,41 +80,41 @@ public class Anotacao implements Serializable {
     }
 
     public static int delete(SQLiteDatabase db, Anotacao anotacao) {
-        String selection = AppAnotacaoContract.AnotacaoContract._ID + "=?";
+        String selection = AppAnotacaoContract.Anotacao._ID + "=?";
         String[] selectionArgs = {String.valueOf(anotacao.getId())};
 
-        return db.delete(AppAnotacaoContract.AnotacaoContract.TABELA_NOME, selection, selectionArgs);
+        return db.delete(AppAnotacaoContract.Anotacao.TABELA_NOME, selection, selectionArgs);
     }
 
     public static long insert(SQLiteDatabase db, Anotacao anotacao) {
         ContentValues tuplaInserir = new ContentValues();
-        tuplaInserir.put(AppAnotacaoContract.AnotacaoContract.COLUNA_TITULO, anotacao.getTitulo());
-        tuplaInserir.put(AppAnotacaoContract.AnotacaoContract.COLUNA_DESCRICAO, anotacao.getDescricao());
-        tuplaInserir.put(AppAnotacaoContract.AnotacaoContract.COLUNA_DATA_INSERCAO, anotacao.getDataInsercao().getTime());
-        tuplaInserir.put(AppAnotacaoContract.AnotacaoContract.COLUNA_DATA_ATUALIZACAO, anotacao.getDataAtualizacao().getTime());
-        return db.insert(AppAnotacaoContract.AnotacaoContract.TABELA_NOME, null, tuplaInserir);
+        tuplaInserir.put(AppAnotacaoContract.Anotacao.COLUNA_TITULO, anotacao.getTitulo());
+        tuplaInserir.put(AppAnotacaoContract.Anotacao.COLUNA_DESCRICAO, anotacao.getDescricao());
+        tuplaInserir.put(AppAnotacaoContract.Anotacao.COLUNA_DATA_INSERCAO, anotacao.getDataInsercao().getTime());
+        tuplaInserir.put(AppAnotacaoContract.Anotacao.COLUNA_DATA_ATUALIZACAO, anotacao.getDataAtualizacao().getTime());
+        return db.insert(AppAnotacaoContract.Anotacao.TABELA_NOME, null, tuplaInserir);
     }
 
     public static int update(SQLiteDatabase db, Anotacao anotacao) {
-        String selection = AppAnotacaoContract.AnotacaoContract._ID + "=?";
+        String selection = AppAnotacaoContract.Anotacao._ID + "=?";
         String[] selectionArgs = {String.valueOf(anotacao.getId())};
 
         ContentValues tuplaAtualizar = new ContentValues();
-        tuplaAtualizar.put(AppAnotacaoContract.AnotacaoContract.COLUNA_TITULO, anotacao.getTitulo());
-        tuplaAtualizar.put(AppAnotacaoContract.AnotacaoContract.COLUNA_DESCRICAO, anotacao.getDescricao());
-        tuplaAtualizar.put(AppAnotacaoContract.AnotacaoContract.COLUNA_DATA_ATUALIZACAO, anotacao.getDataAtualizacao().getTime());
-        return db.update(AppAnotacaoContract.AnotacaoContract.TABELA_NOME, tuplaAtualizar, selection, selectionArgs);
+        tuplaAtualizar.put(AppAnotacaoContract.Anotacao.COLUNA_TITULO, anotacao.getTitulo());
+        tuplaAtualizar.put(AppAnotacaoContract.Anotacao.COLUNA_DESCRICAO, anotacao.getDescricao());
+        tuplaAtualizar.put(AppAnotacaoContract.Anotacao.COLUNA_DATA_ATUALIZACAO, anotacao.getDataAtualizacao().getTime());
+        return db.update(AppAnotacaoContract.Anotacao.TABELA_NOME, tuplaAtualizar, selection, selectionArgs);
     }
 
     public static Anotacao getAnotacaoById(SQLiteDatabase db, int id) {
         Anotacao anotacao = null;
-        String tabelaNome = AppAnotacaoContract.AnotacaoContract.TABELA_NOME;
-        String[] colunas = new String[]{AppAnotacaoContract.AnotacaoContract._ID,
-                AppAnotacaoContract.AnotacaoContract.COLUNA_TITULO,
-                AppAnotacaoContract.AnotacaoContract.COLUNA_DESCRICAO,
-                AppAnotacaoContract.AnotacaoContract.COLUNA_DATA_INSERCAO,
-                AppAnotacaoContract.AnotacaoContract.COLUNA_DATA_ATUALIZACAO};
-        String filtro = AppAnotacaoContract.AnotacaoContract._ID + "=?";
+        String tabelaNome = AppAnotacaoContract.Anotacao.TABELA_NOME;
+        String[] colunas = new String[]{AppAnotacaoContract.Anotacao._ID,
+                AppAnotacaoContract.Anotacao.COLUNA_TITULO,
+                AppAnotacaoContract.Anotacao.COLUNA_DESCRICAO,
+                AppAnotacaoContract.Anotacao.COLUNA_DATA_INSERCAO,
+                AppAnotacaoContract.Anotacao.COLUNA_DATA_ATUALIZACAO};
+        String filtro = AppAnotacaoContract.Anotacao._ID + "=?";
         String[] filtroArgs = {String.valueOf(id)};
         String groupBy = null;
         String having = null;
@@ -126,11 +126,11 @@ public class Anotacao implements Serializable {
 
             while (mCursor.moveToNext()) {
                 anotacao = new Anotacao();
-                int colIdIndex = mCursor.getColumnIndex(AppAnotacaoContract.AnotacaoContract._ID);
-                int colTituloIndex = mCursor.getColumnIndex(AppAnotacaoContract.AnotacaoContract.COLUNA_TITULO);
-                int colDescricaoIndex = mCursor.getColumnIndex(AppAnotacaoContract.AnotacaoContract.COLUNA_DESCRICAO);
-                int colDataInsercaoIndex = mCursor.getColumnIndex(AppAnotacaoContract.AnotacaoContract.COLUNA_DATA_INSERCAO);
-                int colDataAtualizacaoIndex = mCursor.getColumnIndex(AppAnotacaoContract.AnotacaoContract.COLUNA_DATA_ATUALIZACAO);
+                int colIdIndex = mCursor.getColumnIndex(AppAnotacaoContract.Anotacao._ID);
+                int colTituloIndex = mCursor.getColumnIndex(AppAnotacaoContract.Anotacao.COLUNA_TITULO);
+                int colDescricaoIndex = mCursor.getColumnIndex(AppAnotacaoContract.Anotacao.COLUNA_DESCRICAO);
+                int colDataInsercaoIndex = mCursor.getColumnIndex(AppAnotacaoContract.Anotacao.COLUNA_DATA_INSERCAO);
+                int colDataAtualizacaoIndex = mCursor.getColumnIndex(AppAnotacaoContract.Anotacao.COLUNA_DATA_ATUALIZACAO);
 
                 anotacao.setId(mCursor.getInt(colIdIndex));
                 anotacao.setTitulo(mCursor.getString(colTituloIndex));
@@ -147,12 +147,12 @@ public class Anotacao implements Serializable {
 
     public static List<Anotacao> getAnotacao(SQLiteDatabase db) {
         List<Anotacao> anotacoes = new ArrayList<Anotacao>();
-        String tabelaNome = AppAnotacaoContract.AnotacaoContract.TABELA_NOME;
-        String[] colunas = new String[]{AppAnotacaoContract.AnotacaoContract._ID,
-                AppAnotacaoContract.AnotacaoContract.COLUNA_TITULO,
-                AppAnotacaoContract.AnotacaoContract.COLUNA_DESCRICAO,
-                AppAnotacaoContract.AnotacaoContract.COLUNA_DATA_INSERCAO,
-                AppAnotacaoContract.AnotacaoContract.COLUNA_DATA_ATUALIZACAO};
+        String tabelaNome = AppAnotacaoContract.Anotacao.TABELA_NOME;
+        String[] colunas = new String[]{AppAnotacaoContract.Anotacao._ID,
+                AppAnotacaoContract.Anotacao.COLUNA_TITULO,
+                AppAnotacaoContract.Anotacao.COLUNA_DESCRICAO,
+                AppAnotacaoContract.Anotacao.COLUNA_DATA_INSERCAO,
+                AppAnotacaoContract.Anotacao.COLUNA_DATA_ATUALIZACAO};
         String filtro = null;
         String[] filtroArgs = null;
         String groupBy = null;
@@ -165,11 +165,11 @@ public class Anotacao implements Serializable {
         while (mCursor.moveToNext()) {
             Anotacao anotacao = new Anotacao();
 
-            int colIdIndex = mCursor.getColumnIndex(AppAnotacaoContract.AnotacaoContract._ID);
-            int colTituloIndex = mCursor.getColumnIndex(AppAnotacaoContract.AnotacaoContract.COLUNA_TITULO);
-            int colDescricaoIndex = mCursor.getColumnIndex(AppAnotacaoContract.AnotacaoContract.COLUNA_DESCRICAO);
-            int colDataInsercaoIndex = mCursor.getColumnIndex(AppAnotacaoContract.AnotacaoContract.COLUNA_DATA_INSERCAO);
-            int colDataAtualizacaoIndex = mCursor.getColumnIndex(AppAnotacaoContract.AnotacaoContract.COLUNA_DATA_ATUALIZACAO);
+            int colIdIndex = mCursor.getColumnIndex(AppAnotacaoContract.Anotacao._ID);
+            int colTituloIndex = mCursor.getColumnIndex(AppAnotacaoContract.Anotacao.COLUNA_TITULO);
+            int colDescricaoIndex = mCursor.getColumnIndex(AppAnotacaoContract.Anotacao.COLUNA_DESCRICAO);
+            int colDataInsercaoIndex = mCursor.getColumnIndex(AppAnotacaoContract.Anotacao.COLUNA_DATA_INSERCAO);
+            int colDataAtualizacaoIndex = mCursor.getColumnIndex(AppAnotacaoContract.Anotacao.COLUNA_DATA_ATUALIZACAO);
 
             anotacao.setId(mCursor.getInt(colIdIndex));
             anotacao.setTitulo(mCursor.getString(colTituloIndex));

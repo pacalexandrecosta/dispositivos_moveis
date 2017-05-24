@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Exemplo030</string>
+    <string name="reply_label">Responder</string>
+    <string name="label">Etiqueta</string>
+</resources>

@@ -1,15 +1,12 @@
 package desenvolvimento.nassau.exemplo029;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import java.util.Date;
 
@@ -68,21 +65,21 @@ public class InserirAnotacaoActivity
             anotacaoInsert.setDataAtualizacao(new Date());
             anotacaoInsert.setDataInsercao(new Date());
 
-            resultado = Anotacao.insert(dbEscrita, anotacaoInsert);
+            resultado = desenvolvimento.nassau.exemplo029.Anotacao.insert(dbEscrita, anotacaoInsert);
             if (resultado > 0)
                 Toast.makeText(this,
                         "Anotação inserida com sucesso",
                         Toast.LENGTH_SHORT).show();
         } else {
 
-            String selection = AppAnotacaoContract.AnotacaoContract._ID + "=?";
+            String selection = AppAnotacaoContract.Anotacao._ID + "=?";
             String[] selectionArgs = {String.valueOf(anotacaoUpdate.getId())};
 
             anotacaoUpdate.setTitulo(edtTitulo.getText().toString());
             anotacaoUpdate.setDescricao(edtDescricao.getText().toString());
             anotacaoUpdate.setDataAtualizacao(new Date());
 
-            resultado = Anotacao.update(dbEscrita, anotacaoUpdate);
+            resultado = desenvolvimento.nassau.exemplo029.Anotacao.update(dbEscrita, anotacaoUpdate);
             if (resultado > 0)
                 Toast.makeText(this,
                         "Anotação atualizada com sucesso",
